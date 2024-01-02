@@ -44,12 +44,34 @@ const textInput = document.querySelector("input");
 const resultSection = document.querySelector("section");
 const form = document.querySelector("form");
 
-form.addEventListener("input", (e) => {
-  //   e.preventDefault();
-  let upperString = stringToUpperCase(textInput.value);
-  let charArr = splitEnglishString(upperString);
-  let morseArr = changeToMorse(charArr);
-  let joinedMorse = joinMorse(morseArr);
-  clearNode(resultSection);
-  createNode(resultSection, "p", joinedMorse);
+form.addEventListener("input", () => {
+  let whichDirection = validateInput(textInput.value);
+  if (whichDirection == "InvalidInput") {
+    clearNode(resultSection);
+    createNode(resultSection, "p", "Invalid Input");
+  }
+  if (whichDirection == "EnglishToMorse") {
+    let upperString = stringToUpperCase(textInput.value);
+    let charArr = splitEnglishString(upperString);
+    let morseArr = changeToMorse(charArr);
+    let joinedMorse = joinMorse(morseArr);
+    clearNode(resultSection);
+    createNode(resultSection, "p", joinedMorse);
+  }
+  if (whichDirection == "MorseToEnglish") {
+    console.log(
+      "You've either written morse code, which hasnt been implemented yet, or you've chucked in a - or a . somewhere"
+    );
+  }
 });
+
+const validateInput = (input) => {
+  if (input.includes("/-./") && input.includes("/(?!-|.| )/")) {
+    return "InvalidInput";
+  }
+  if (input.includes("-") || input.includes(".")) {
+    return "MorseToEnglish";
+  } else {
+    return "EnglishToMorse";
+  }
+};
