@@ -5,6 +5,12 @@ import {
   joinMorse,
 } from "./eng-to-morse.js";
 
+import {
+  splitMorseString,
+  changeToEnglish,
+  joinEnglish,
+} from "./morse-to-eng.js";
+
 import { createNode, clearNode } from "./dom-functions.js";
 
 export const morseObject = {
@@ -37,9 +43,14 @@ export const morseObject = {
   " ": "/",
 }; //A to Z in Morse Code
 
-console.log(morseObject);
+export const englishObject = Object.fromEntries(
+  Object.entries(morseObject).map((a) => a.reverse())
+);
 
-const button = document.querySelector("button");
+console.log(morseObject);
+console.log(englishObject);
+
+// const button = document.querySelector("button");
 const textInput = document.querySelector("input");
 const resultSection = document.querySelector("section");
 const form = document.querySelector("form");
@@ -52,16 +63,20 @@ form.addEventListener("input", () => {
   }
   if (whichDirection == "EnglishToMorse") {
     let upperString = stringToUpperCase(textInput.value);
-    let charArr = splitEnglishString(upperString);
-    let morseArr = changeToMorse(charArr);
-    let joinedMorse = joinMorse(morseArr);
+    upperString = splitEnglishString(upperString);
+    upperString = changeToMorse(upperString);
+    upperString = joinMorse(upperString);
     clearNode(resultSection);
-    createNode(resultSection, "p", joinedMorse);
+    createNode(resultSection, "p", upperString);
   }
   if (whichDirection == "MorseToEnglish") {
-    console.log(
-      "You've either written morse code, which hasnt been implemented yet, or you've chucked in a - or a . somewhere"
-    );
+    // console.log(
+    //   "You've either written morse code, which hasnt been implemented yet, or you've chucked in a - or a . somewhere"
+    // );
+    let morseToEnglishString = splitMorseString(textInput.value);
+    morseToEnglishString = changeToEnglish(morseToEnglishString);
+    morseToEnglishString = joinEnglish(morseToEnglishString);
+    console.log(morseToEnglishString);
   }
 });
 
