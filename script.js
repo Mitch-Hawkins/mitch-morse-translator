@@ -76,12 +76,14 @@ form.addEventListener("input", () => {
     let morseToEnglishString = splitMorseString(textInput.value);
     morseToEnglishString = changeToEnglish(morseToEnglishString);
     morseToEnglishString = joinEnglish(morseToEnglishString);
-    console.log(morseToEnglishString);
+    clearNode(resultSection);
+    createNode(resultSection, "p", morseToEnglishString);
+    // console.log(morseToEnglishString);
   }
 });
 
 const validateInput = (input) => {
-  if (input.includes("/-./") && input.includes("/(?!-|.| )/")) {
+  if (input.match(/-|\./) && input.match(/[^-. ]/)) {
     return "InvalidInput";
   }
   if (input.includes("-") || input.includes(".")) {
