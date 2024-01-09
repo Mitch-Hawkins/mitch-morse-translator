@@ -1,9 +1,8 @@
-import { englishObject } from "./script.js";
+import { morseObject } from "./eng-to-morse.js";
 
-// export const stringToUpperCase = (string) => {
-//   let newString = string.toUpperCase();
-//   return newString;
-// };
+export const englishObject = Object.fromEntries(
+  Object.entries(morseObject).map((a) => a.reverse())
+);
 
 export const splitMorseString = (string) => {
   let charArr = string.split(" ");

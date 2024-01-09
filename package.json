@@ -1,0 +1,22 @@
+{
+  "name": "mitch-morse-translator",
+  "version": "1.0.0",
+  "description": "Eng > Morse I want to input a string I want to make that string go to uppercase because the morse code object is case insensitive I want to split that string into an array of individual characters (split(/[A-Z]/)??) I want to then compare each index of that array and match its character to the corresponding Key in the morse code object, and grab the value of that key.",
+  "main": "dom-functions.js",
+  "scripts": {
+    "test-coverage": "jest ./morsetests.test.js --watch --coverage",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.7",
+    "@types/jest": "^29.5.11",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}
