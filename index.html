@@ -5,13 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Morse Code Translator</title>
     <script src="./script.js" type="module" defer></script>
+    <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
-    <form>
-      <label>Input: </label>
-      <input type="text" />
-      <!-- <button>Submit</button> -->
-    </form>
-    <section></section>
+    <section class="heading">
+      <h1 class="heading__header">Morse Code Translator</h1>
+      <p class="heading__description">
+        Welcome to my Morse Code Translator! Here, you can either input a string
+        of English text to be converted into Morse Code, or provide some Morse
+        Code to be translated back into English! Feel free to use the dictionary
+        at the bottom of the page to help with inputing Morse Code. Enjoy!
+      </p>
+    </section>
+    <section class="container">
+      <form class="container__form">
+        <label class="container__form__label">Input: </label>
+        <textarea class="container__form__input"></textarea>
+      </form>
+      <section class="container__results">
+        <label class="container__results__label">Output: </label>
+        <section class="container__results__output"></section>
+      </section>
+    </section>
+    <section class="dictionary">
+      <p>Dicitionary goes here</p>
+    </section>
   </body>
 </html>

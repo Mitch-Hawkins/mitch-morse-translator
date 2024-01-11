@@ -24,9 +24,10 @@ const clearNode = (node) => {
   node.innerHTML = "";
 };
 
-const textInput = document.querySelector("input");
-const resultSection = document.querySelector("section");
-const form = document.querySelector("form");
+const textInput = document.querySelector(".container__form__input");
+const resultSection = document.querySelector(".container__results__output");
+
+const form = document.querySelector(".container__form");
 
 form.addEventListener("input", () => {
   let whichDirection = validateInput(textInput.value);
@@ -51,3 +52,50 @@ form.addEventListener("input", () => {
     createNode(resultSection, "p", morseToEnglishString);
   }
 });
+
+let arrayOfPings = [];
+let currentTime = +new Date();
+let previousTime = currentTime;
+let deltaTime = currentTime - previousTime;
+let hasPingTimedout = true;
+
+button.addEventListener("click", (e) => {
+  e.preventDefault();
+  let key = ping();
+  if (key) {
+    arrayOfPings.push(key);
+  }
+  if (arrayOfPings.length == 4) {
+    let joinedArr = arrayOfPings.join("");
+    textInput.value += joinedArr;
+    arrayOfPings = [];
+  }
+  console.log(key);
+});
+
+function ping() {
+  // if (hasPingTimedout) {
+  //   deltaTime = currentTime - previousTime
+  // }
+
+  currentTime = +new Date();
+  deltaTime = currentTime - previousTime;
+  if (deltaTime <= 400) {
+    previousTime = currentTime;
+    return ".";
+  } else if (deltaTime >= 401 && deltaTime <= 1500) {
+    previousTime = currentTime;
+    return "-";
+  } else if (deltaTime >= 1501 && deltaTime <= 2000) {
+    previousTime = currentTime;
+    return "/";
+    // let joinedArr = arrayOfPings.join("");
+    // textInput.value += joinedArr;
+    // arrayOfPings = [];
+    // previousTime = currentTime;
+    // return " / ";
+  } else {
+    previousTime = currentTime;
+    return;
+  }
+}
