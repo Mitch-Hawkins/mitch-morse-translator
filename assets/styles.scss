@@ -1,3 +1,5 @@
+@use "./modules/mixins";
+
 * {
   padding: 0px;
   margin: 0px;
@@ -5,11 +7,11 @@
 }
 
 body {
-  background-color: #a8dadc;
+  background-color: #e5e5e5;
 }
 
 .heading {
-  //   border: 2px solid blue;
+  // border: 2px solid blue;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -19,12 +21,26 @@ body {
   margin-top: 50px;
   &__header {
     font-size: 72px;
-    color: #e63946;
+    color: #fca311;
+    @include mixins.small-height {
+      font-size: 36px;
+    }
+    @include mixins.small-width {
+      font-size: 36px;
+    }
   }
   &__description {
     font-size: 20px;
     width: 70vw;
-    color: #1d3557;
+    color: #14213d;
+    @include mixins.small-height {
+      font-size: 14px;
+      width: 95%;
+    }
+    @include mixins.small-width {
+      font-size: 14px;
+      width: 95%;
+    }
   }
 }
 
@@ -33,49 +49,117 @@ body {
   justify-content: space-around;
   align-items: center;
   height: 40vh;
-  //   border: 2px solid red;
+  // border: 2px solid red;
   font-size: 24px;
+  @include mixins.small-height {
+    flex-direction: column;
+    height: 60vh;
+  }
+  @include mixins.small-width {
+    flex-direction: column;
+    height: 60vh;
+  }
   &__form {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
-    border: 2px solid #1d3557;
-    background-color: #f1faee;
+    border: 2px solid #000000;
+    background-color: #14213d;
     border-radius: 20px;
     width: 35%;
-    height: 70%;
+    height: 60%;
+    min-height: 280px;
+    padding: 20px;
+    @include mixins.small-height {
+      width: 80%;
+      min-height: 100px;
+      height: 25%;
+      padding: 20px;
+      font-size: 16px;
+    }
+    @include mixins.small-width {
+      width: 80%;
+      min-height: 100px;
+      height: 25%;
+      padding: 20px;
+      font-size: 16px;
+    }
     &__label {
-      color: #1d3557;
+      color: #ffffff;
     }
     &__input {
-      width: 80%;
+      width: 90%;
       height: 80%;
-      font-size: 24px;
+      font-size: 20px;
       border-radius: 10px;
-      border: 2px solid #1d3557;
+      border: 2px solid #000000;
       resize: none;
+      @include mixins.small-height {
+        font-size: 16px;
+      }
+      @include mixins.small-width {
+        font-size: 16px;
+      }
     }
   }
   &__results {
     display: flex;
     flex-direction: column;
-    border: 2px solid #1d3557;
-    background-color: #f1faee;
+    border: 2px solid #000000;
+    background-color: #14213d;
     border-radius: 20px;
     width: 35%;
-    height: 70%;
+    height: 60%;
+    min-height: 280px;
+    padding: 20px;
+    @include mixins.small-height {
+      width: 80%;
+      min-height: 100px;
+      height: 30%;
+      padding: 20px;
+      font-size: 16px;
+    }
+    @include mixins.small-width {
+      width: 80%;
+      min-height: 100px;
+      height: 30%;
+      padding: 20px;
+      font-size: 16px;
+    }
     justify-content: space-around;
     align-items: center;
     &__label {
-      color: #1d3557;
+      color: #ffffff;
     }
     &__output {
-      border: 2px solid #1d3557;
+      border: 2px solid #000000;
       background-color: white;
       border-radius: 10px;
-      width: 80%;
+      width: 90%;
       height: 80%;
+      font-size: 20px;
+      @include mixins.small-height {
+        font-size: 16px;
+      }
+      @include mixins.small-width {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.dictionary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // border: 2px solid orange;
+  font-size: 20px;
+  &__table {
+    border: 1px solid black;
+    & td {
+      border: 1px solid black;
+      padding: 3px;
     }
   }
 }
